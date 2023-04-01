@@ -1,0 +1,38 @@
+<button
+    tuiButton
+    type="button"
+    appearance="primary"
+    (click)="createStudent()"
+    title="Добавить запись"
+>
+    Добавить студента
+</button>
+
+
+<tui-loader [showLoader]="studentService.isLoading">
+    <div class="table" *ngIf="!studentService.isLoading && studentService.students.length !== 0">
+        <app-table-student 
+            [students]="studentService.students" class="table"
+            (onDeleteStudent)="deleteStudent($event)"
+            (onUpdateStudent)="updateStudent($event)"
+        />
+    </div>
+    <div 
+        *ngIf="!studentService.isLoading && studentService.students.length === 0"
+        class="empty"
+    >
+        Список студентов пуст...
+    </div>
+</tui-loader>
+
+
+<ng-template
+    [(tuiDialog)]="open"
+    [tuiDialogOptions]="{ size: 's'}"
+>
+    <app-form-student 
+        (onSubmit)="submit($event)"
+        [defaultData]="studentService.currentStudent"
+        [title]="titleForm"
+    />
+</ng-template>

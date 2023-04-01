@@ -1,0 +1,36 @@
+<table class="tui-table">
+    <thead>
+        <tr class="tui-table__tr">
+            <th class="tui-table__th">ФИО</th>
+            <th class="tui-table__th">Дата рождения</th>
+            <th class="tui-table__th">Номер</th>
+            <th class="tui-table__th">Группа</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr 
+            class="tui-table__tr tui-table__tr_border_none" 
+            *ngFor="let student of students"
+        >
+            <td class="tui-table__td">{{ student.name }}</td>
+            <td class="tui-table__td">{{ student.birthdate | date: 'dd.MM.yyyy' }}</td>
+            <td class="tui-table__td">{{ student.number }}</td>
+            <td class="tui-table__td">{{ student.group ?  student.group.name : 'неопределён'}}</td>
+            <td class="tui-table__td">
+                <tui-svg
+                    class="edit"
+                    src="tuiIconEdit2" 
+                    (click)="onUpdateStudent.emit(student.id)"
+                />  
+            </td>
+            <td class="tui-table__td">
+                <tui-svg
+                    class="remove"
+                    src="tuiIconTrash2"
+                    (click)="onDeleteStudent.emit(student.id)"
+                />
+            </td>
+        </tr>
+    </tbody>
+</table>
+

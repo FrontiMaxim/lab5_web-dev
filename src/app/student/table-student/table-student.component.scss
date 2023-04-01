@@ -1,0 +1,17 @@
+.tui-table {
+    width: 50vw;
+
+    tbody {
+        tui-svg {
+            cursor: pointer;
+
+            &.edit {
+                color:  #526ed3;
+            }
+
+            &.remove {
+                color:  #ff7043;
+            }
+        }
+    }
+}
