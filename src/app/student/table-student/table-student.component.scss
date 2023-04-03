@@ -1,3 +1,5 @@
+@import '../../styles/color';
+
 .tui-table {
     width: 50vw;
 
@@ -6,11 +8,11 @@
             cursor: pointer;
 
             &.edit {
-                color:  #526ed3;
+                color:  $primary;
             }
 
             &.remove {
-                color:  #ff7043;
+                color:  $red;
             }
         }
     }

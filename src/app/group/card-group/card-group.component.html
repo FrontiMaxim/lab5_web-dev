@@ -1,1 +1,32 @@
+<tui-island>
+    <div class="head">
+        <h2 class="tui-island__title">{{ data.name }}</h2>
 
+        <div class="wrapper_actions">
+            <tui-svg
+                class="edit"
+                src="tuiIconEdit2" 
+                (click)="onUpdateGroup.emit(data.id)"
+            />  
+    
+            <tui-svg
+                class="remove"
+                src="tuiIconTrash2"
+                (click)="onDeleteGroup.emit(data.id)"
+            />
+        </div>
+        
+    </div>
+   
+
+    <div *ngIf="data.students.length !== 0">
+        <h3>Список студентов</h3>
+        <ol class="tui-list tui-list_ordered" >
+            <li class="tui-list__item" *ngFor="let student of data.students">{{ student.name }}</li>
+        </ol>
+    </div>
+    
+
+    <div *ngIf="data.students.length === 0">В группе нет студентов...</div>
+    
+</tui-island>

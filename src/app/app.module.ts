@@ -1,5 +1,10 @@
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
-import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER, TuiTextfieldControllerModule } from "@taiga-ui/core";
+import { TuiRootModule, 
+         TuiDialogModule, 
+         TuiAlertModule, 
+         TUI_SANITIZER, 
+         TuiTextfieldControllerModule,
+        } from "@taiga-ui/core";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
@@ -19,19 +24,21 @@ import {TuiTabsModule,
         TuiInputModule, 
         TuiInputCountModule, 
         TuiSelectModule,
-        TuiDataListWrapperModule
+        TuiDataListWrapperModule,
+        TuiIslandModule,
       } from '@taiga-ui/kit';
 
 import {TuiDataListModule, 
         TuiButtonModule, 
         TuiErrorModule,
         TuiSvgModule,
-        TuiLoaderModule
+        TuiLoaderModule,
       } from '@taiga-ui/core';
 
 
 import { TableStudentComponent } from "./student/table-student/table-student.component";
 import { FormStudentComponent } from './student/form-student/form-student.component';
+import { FormGroupComponent } from './group/form-group/form-group.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,8 @@ import { FormStudentComponent } from './student/form-student/form-student.compon
     CardGroupComponent,
     PageGroupComponent,
     TableStudentComponent,
-    FormStudentComponent
+    FormStudentComponent,
+    FormGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,8 @@ import { FormStudentComponent } from './student/form-student/form-student.compon
     TuiButtonModule,
     TuiErrorModule,
     TuiSvgModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    TuiIslandModule
   ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]

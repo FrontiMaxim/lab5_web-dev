@@ -1,0 +1,27 @@
+@import '../../styles/color';
+
+tui-island {
+    width: 20vw;
+    margin-top: 20px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+
+    .wrapper_actions {
+
+        tui-svg {
+            cursor: pointer;
+        }
+
+        .edit {
+            margin-right: 10px;
+            color: $primary;
+        }
+
+        .remove {
+            color: $red;
+        }
+    }
+}

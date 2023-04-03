@@ -1,0 +1,39 @@
+<button
+    tuiButton
+    type="button"
+    appearance="primary"
+    (click)="createGroup()"
+    title="Добавить запись"
+>
+    Добавить группу
+</button>
+
+
+<tui-loader [showLoader]="groupService.isLoading">
+    <div class="list" *ngIf="!groupService.isLoading && groupService.groups.length !== 0">
+        <app-card-group 
+            *ngFor="let group of groupService.groups" 
+            [data]="group" 
+            (onDeleteGroup)="deleteGroup($event)"
+            (onUpdateGroup)="updateGroup($event)"
+        />
+    </div>
+    <div 
+        *ngIf="!groupService.isLoading && groupService.groups.length === 0"
+        class="empty"
+    >
+        Список групп пуст...
+    </div>
+</tui-loader>
+
+
+<ng-template
+    [(tuiDialog)]="dialogService.isOpen"
+    [tuiDialogOptions]="{ size: 's'}"
+>
+    <app-form-group 
+        (onSubmit)="submit($event)"
+        [defaultData]="groupService.currentGroup"
+        [title]="titleForm"
+    />
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Group } from '../models/group.interface';
 
 @Component({
@@ -8,4 +8,6 @@ import { Group } from '../models/group.interface';
 })
 export class CardGroupComponent {
   @Input() data: Group = {} as Group;
+  @Output() onUpdateGroup = new EventEmitter<number>();
+  @Output() onDeleteGroup = new EventEmitter<number>();
 }

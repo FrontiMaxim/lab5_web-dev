@@ -1,0 +1,19 @@
+<h2>{{ title }}</h2>
+<form [formGroup]="form" (ngSubmit)="submit()"> 
+    <tui-input 
+        formControlName="name" 
+        class="tui-space_top-6"
+        [tuiTextfieldCleaner]="true"
+    >
+        Название группы
+    </tui-input>
+    <tui-error [error]="errorRequired(name)" />
+
+    <button
+        tuiButton
+        type="submit"
+        appearance="primary"
+    >
+        Подтвердить
+    </button>
+</form>

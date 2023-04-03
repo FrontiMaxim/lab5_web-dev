@@ -55,7 +55,7 @@ export class FormStudentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.groupService.getAll().subscribe(list => this.groups = list);
+    this.groupService.readAll().add(() => this.groups = this.groupService.groups);
 
     const date = this.defaultData?.birthdate;
 

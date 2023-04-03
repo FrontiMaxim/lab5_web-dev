@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { Student } from '../models/students.interface';
 import { ModeForm } from 'src/app/shared/modeForm.enum';
+import { DialogService } from 'src/app/shared/dialog.service';
 
 @Component({
   selector: 'app-page-student',
@@ -12,9 +13,9 @@ export class PageStudentComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
+    public dialogService: DialogService
   ) {}
 
-  open = false;
   titleForm: string = '';
   modeForm: ModeForm = ModeForm.CREATE;
  
@@ -24,13 +25,9 @@ export class PageStudentComponent implements OnInit {
 
   submit(student: Student) {
     if(this.modeForm === ModeForm.CREATE) {
-      this.studentService.create(student).add(() => {
-        this.open = false;
-      })
+      this.studentService.create(student);
     } else if(this.modeForm === ModeForm.UPDATE) {
-      this.studentService.update(student).add(() => {
-        this.open = false;
-      })
+      this.studentService.update(student);
     }
   }
 
@@ -38,14 +35,14 @@ export class PageStudentComponent implements OnInit {
     this.modeForm = ModeForm.CREATE;
     this.titleForm = 'Добавить запись';
     this.studentService.currentStudent = null;
-    this.open = true;
+    this.dialogService.isOpen = true;
   }
 
   updateStudent(id: number) {
     this.modeForm = ModeForm.UPDATE;
     this.studentService.read(id).add(() => {
       this.titleForm = 'Редактировать запись';
-      this.open = true;
+      this.dialogService.isOpen = true;
     });
   }
 

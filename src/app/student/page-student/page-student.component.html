@@ -27,7 +27,7 @@
 
 
 <ng-template
-    [(tuiDialog)]="open"
+    [(tuiDialog)]="dialogService.isOpen"
     [tuiDialogOptions]="{ size: 's'}"
 >
     <app-form-student 
